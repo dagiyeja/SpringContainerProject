@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="member1" class="com.sist.temp.Member"
+		p:id="admin" 
+		p:name="춘향이"
+		p:addr="서울"
+	/>
+	<bean id="member2" class="com.sist.temp.Member"
+		p:id="hong" 
+		p:name="홍길동"
+		p:addr="경기"
+	/>
+	<bean id="member3" class="com.sist.temp.Member"
+		p:id="park" 
+		p:name="박문수"
+		p:addr="강원"
+	/>
+	<!--  set 하기 전에 메모리 할당(bean 태그정보 읽어옴)을 다 해놓은 상태이므로, 순서는 상관없다 -->
+	<bean id="mc" class="com.sist.temp.MemberConfig">
+		<property name="list"><!--  setList() -->
+ 			<list>
+				<ref bean="member1"/> <!--  list.add(member1) -->
+				<ref bean="member2"/>
+				<ref bean="member3"/>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="id" value="admin"/>
+			</map>
+		</property>
+	</bean>
+</beans>
